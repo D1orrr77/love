@@ -15,7 +15,7 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Segoe UI',system-ui,sans-serif;color:#fff;overflow-x:hidden;
   background:radial-gradient(circle at 20% 20%,var(--bg2),var(--bg1) 60%);
-  background-attachment:fixed;min-height:100vh;cursor:none;
+  background-attachment:fixed;min-height:100vh;
 }
 ::selection{background:var(--pink);color:#fff}
 
@@ -24,35 +24,24 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none}
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");}
 
-#cursor{position:fixed;top:0;left:0;width:22px;height:22px;z-index:9999;pointer-events:none;
-  transform:translate(-50%,-50%);transition:width .2s,height .2s;filter:drop-shadow(0 0 8px var(--pink))}
-#cursor svg{width:100%;height:100%;fill:var(--pink)}
-#cursor.hovering{width:44px;height:44px}
-@media (hover:none){#cursor{display:none}body{cursor:auto}}
-
 /* ---------- NAV ---------- */
 #mainNav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;
   padding:14px 26px;background:rgba(18,7,31,.55);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
-#mainNav .logo{font-size:1.25rem;font-weight:800;text-decoration:none;cursor:none;
+#mainNav .logo{font-size:1.25rem;font-weight:800;text-decoration:none;
   background:linear-gradient(90deg,var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
 .navLinks{display:flex;gap:4px;flex-wrap:wrap}
 .navLinks a{padding:9px 16px;border-radius:40px;text-decoration:none;color:rgba(255,255,255,.7);
-  font-size:.85rem;letter-spacing:.05em;transition:all .3s;cursor:none}
+  font-size:.85rem;letter-spacing:.05em;transition:all .3s}
 .navLinks a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .navLinks a.active{color:#fff;background:linear-gradient(135deg,rgba(255,77,141,.4),rgba(164,92,255,.3));
   box-shadow:0 0 18px rgba(255,77,141,.35)}
 .navRight{display:flex;gap:8px;align-items:center}
 #nameBtn{padding:9px 16px;border-radius:40px;border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.06);color:#fff;font-size:.8rem;cursor:none;transition:all .3s}
+  background:rgba(255,255,255,.06);color:#fff;font-size:.8rem;transition:all .3s;cursor:pointer}
 #nameBtn:hover{background:rgba(255,77,141,.3)}
 #musicBtn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
-  background:rgba(255,255,255,.06);color:#fff;font-size:17px;cursor:none;transition:transform .3s}
+  background:rgba(255,255,255,.06);color:#fff;font-size:17px;transition:transform .3s;cursor:pointer}
 #musicBtn:hover{transform:scale(1.15)}
-@media(max-width:760px){
-  #mainNav{flex-wrap:wrap;gap:8px;padding:10px 14px}
-  .navLinks{order:3;width:100%;justify-content:center}
-  .navLinks a{padding:7px 11px;font-size:.78rem}
-}
 
 /* ---------- INTRO ---------- */
 #intro{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;
@@ -63,7 +52,7 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none}
   color:var(--pink2);animation:glowPulse 2.5s ease-in-out infinite;text-align:center;padding:0 20px}
 @keyframes glowPulse{0%,100%{text-shadow:0 0 12px var(--pink)}50%{text-shadow:0 0 34px var(--pink),0 0 60px var(--violet)}}
 #openBtn{margin-top:10px;padding:18px 54px;border:none;border-radius:60px;font-size:1.05rem;letter-spacing:.12em;
-  color:#fff;background:linear-gradient(135deg,var(--pink),#a45cff);cursor:none;
+  color:#fff;background:linear-gradient(135deg,var(--pink),#a45cff);cursor:pointer;
   box-shadow:0 0 30px rgba(255,77,141,.55);animation:btnBeat 1.4s ease-in-out infinite;transition:transform .3s}
 #openBtn:hover{transform:scale(1.07)}
 @keyframes btnBeat{0%,100%{box-shadow:0 0 24px rgba(255,77,141,.5)}50%{box-shadow:0 0 52px rgba(255,77,141,.95)}}
@@ -83,7 +72,7 @@ canvas{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none}
   background:rgba(0,0,0,.3);color:#fff;font-size:1.05rem;outline:none;text-align:center}
 .modalBox input:focus{border-color:var(--pink);box-shadow:0 0 16px rgba(255,77,141,.4)}
 .modalBox button{margin-top:16px;padding:13px 34px;border:none;border-radius:14px;font-size:1rem;color:#fff;
-  background:linear-gradient(135deg,var(--pink),#a45cff);cursor:none}
+  background:linear-gradient(135deg,var(--pink),#a45cff);cursor:pointer}
 
 /* ---------- PAGES ---------- */
 main{position:relative;z-index:3}
@@ -98,20 +87,14 @@ main{position:relative;z-index:3}
   animation:gradShift 6s linear infinite}
 @keyframes gradShift{to{background-position:300% 0}}
 .sub{margin-top:22px;max-width:560px;text-align:center;opacity:.75;font-size:1.05rem;line-height:1.7}
-.reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s ease}
-.reveal.in{opacity:1;transform:none}
 
 /* ---------- HOME links ---------- */
 .linksGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;width:min(1000px,92vw);margin-top:46px}
-.bigLink{display:block;color:#fff;border-radius:24px;padding:40px 26px;text-align:center;cursor:none;
+.bigLink{display:block;color:#fff;border-radius:24px;padding:40px 26px;text-align:center;cursor:pointer;
   background:var(--glass);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);
   transition:transform .35s cubic-bezier(.2,1.2,.4,1),box-shadow .35s,border-color .35s;position:relative;overflow:hidden}
-.bigLink::after{content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,77,141,.25),transparent 60%);
-  opacity:0;transition:opacity .3s;pointer-events:none}
 .bigLink:hover{transform:translateY(-10px) scale(1.03);border-color:rgba(255,143,184,.6);
   box-shadow:0 18px 44px rgba(255,77,141,.28)}
-.bigLink:hover::after{opacity:1}
 .bigLink .emo{font-size:52px;display:block;margin-bottom:14px;filter:drop-shadow(0 6px 14px rgba(255,77,141,.5))}
 .bigLink h3{font-size:1.3rem;margin-bottom:8px}
 .bigLink p{font-size:.85rem;opacity:.6;line-height:1.6}
@@ -122,7 +105,7 @@ main{position:relative;z-index:3}
 /* ---------- ENVELOPE ---------- */
 .envWrap{text-align:center}
 .envHint{margin-bottom:26px;opacity:.7;letter-spacing:.15em;font-size:.85rem}
-.envelope{width:min(460px,88vw);height:280px;margin:0 auto;position:relative;cursor:none;
+.envelope{width:min(460px,88vw);height:280px;margin:0 auto;position:relative;cursor:pointer;
   filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));transition:transform .3s}
 .envelope:hover{transform:scale(1.03)}
 .envBack{position:absolute;inset:0;background:linear-gradient(160deg,#5b2a86,#3a1557);border-radius:10px}
@@ -147,14 +130,14 @@ main{position:relative;z-index:3}
   justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,.45);transition:opacity .3s,transform .4s}
 .envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(1.6)}
 #nextLetter{margin-top:30px;padding:13px 34px;border-radius:40px;border:1px solid rgba(255,255,255,.3);
-  background:rgba(255,255,255,.08);color:#fff;font-size:.9rem;letter-spacing:.1em;cursor:none;transition:all .3s;
+  background:rgba(255,255,255,.08);color:#fff;font-size:.9rem;letter-spacing:.1em;cursor:pointer;transition:all .3s;
   opacity:0;visibility:hidden}
 #nextLetter.show{opacity:1;visibility:visible}
 #nextLetter:hover{background:rgba(255,77,141,.35)}
 
 /* ---------- CARDS ---------- */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;width:min(1000px,92vw);margin-top:40px}
-.card{height:230px;perspective:1000px}
+.card{height:230px;perspective:1000px;cursor:pointer}
 .cardInner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,1.3,.4,1)}
 .card.flipped .cardInner{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;border-radius:22px;backface-visibility:hidden;display:flex;flex-direction:column;
@@ -178,7 +161,7 @@ main{position:relative;z-index:3}
 .tilt .frame span{opacity:.5;font-size:.9rem;text-align:center;padding:0 20px;line-height:1.6}
 .tilt h3{transform:translateZ(60px);font-size:1.3rem;font-weight:600}
 .tilt .uploadBtn{transform:translateZ(70px);padding:11px 26px;border-radius:40px;border:1px solid rgba(255,255,255,.3);
-  background:rgba(255,255,255,.08);color:#fff;font-size:.85rem;letter-spacing:.1em;cursor:none;transition:background .3s}
+  background:rgba(255,255,255,.08);color:#fff;font-size:.85rem;letter-spacing:.1em;cursor:pointer;transition:background .3s}
 .tilt .uploadBtn:hover{background:rgba(255,77,141,.35)}
 #fileInput{display:none}
 .memTip{margin-top:26px;font-size:.85rem;opacity:.55;font-style:italic}
@@ -190,12 +173,12 @@ main{position:relative;z-index:3}
   -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
 .meterMsg{margin-top:14px;min-height:3.2em;font-size:1.05rem;line-height:1.6;opacity:.85;font-style:italic}
 input[type=range]{width:100%;margin-top:28px;-webkit-appearance:none;appearance:none;height:12px;border-radius:8px;
-  background:linear-gradient(90deg,var(--pink) var(--fill,50%),rgba(255,255,255,.15) var(--fill,50%));outline:none;cursor:none}
+  background:linear-gradient(90deg,var(--pink) var(--fill,50%),rgba(255,255,255,.15) var(--fill,50%));outline:none;cursor:pointer}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;
-  background:#fff;border:6px solid var(--pink);box-shadow:0 0 20px rgba(255,77,141,.8);cursor:none;transition:transform .2s}
+  background:#fff;border:6px solid var(--pink);box-shadow:0 0 20px rgba(255,77,141,.8);cursor:pointer;transition:transform .2s}
 input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 #complimentBtn{margin-top:44px;padding:16px 44px;border-radius:60px;border:none;font-size:1rem;letter-spacing:.08em;
-  color:#fff;background:linear-gradient(135deg,var(--pink),#a45cff);cursor:none;
+  color:#fff;background:linear-gradient(135deg,var(--pink),#a45cff);cursor:pointer;
   box-shadow:0 0 26px rgba(255,77,141,.5);transition:transform .3s}
 #complimentBtn:hover{transform:scale(1.07)}
 #compliment{max-width:520px;text-align:center;margin-top:26px;font-family:Georgia,serif;font-style:italic;
@@ -204,6 +187,50 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 #heartRain{position:fixed;inset:0;pointer-events:none;z-index:5000}
 footer{position:relative;z-index:3;text-align:center;padding:50px 20px 70px;opacity:.75}
 footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-bottom:10px}
+
+/* ---------- RESPONSIVE & MOBILE MENU FIX ---------- */
+.menuToggle{
+  display:none; width:44px; height:44px; padding:10px;
+  border:1px solid rgba(255,255,255,.2); border-radius:13px;
+  background:rgba(255,255,255,.07); color:#fff; cursor:pointer;
+  flex-direction:column; justify-content:center; gap:5px;
+}
+.menuToggle span{
+  display:block; width:21px; height:2px; border-radius:3px;
+  background:#fff; transition:transform .25s ease, opacity .2s ease;
+}
+.menuToggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menuToggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menuToggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.navBackdrop{display:none}
+
+@media (max-width: 760px){
+  #mainNav{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:9px;padding:10px 14px;}
+  #mainNav .logo{font-size:1.15rem;}
+  .menuToggle{display:flex;grid-column:2;grid-row:1;}
+  .navRight{grid-column:3;grid-row:1;gap:6px;}
+  #nameBtn{max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  #musicBtn{width:40px;height:40px;flex:0 0 40px;}
+  .navLinks{
+    position:fixed;z-index:602;top:68px;left:12px;right:12px;
+    width:auto;display:flex;flex-direction:column;align-items:stretch;
+    gap:5px;padding:12px;border:1px solid rgba(255,255,255,.13);
+    border-radius:18px;background:rgba(22,8,39,.97);
+    box-shadow:0 18px 50px rgba(0,0,0,.4);backdrop-filter:blur(18px);
+    opacity:0;visibility:hidden;transform:translateY(-10px);
+    transition:opacity .22s ease, transform .22s ease, visibility .22s;
+  }
+  .navLinks.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .navLinks a{display:block;width:100%;padding:12px 14px;font-size:.9rem;}
+  .navBackdrop{
+    display:block;position:fixed;inset:0;z-index:590;
+    background:rgba(0,0,0,.38);opacity:0;visibility:hidden;
+    transition:opacity .2s ease, visibility .2s;
+  }
+  .navBackdrop.show{opacity:1;visibility:visible;}
+  body.menu-open{overflow:hidden;}
+  .linksGrid, .grid{grid-template-columns:1fr;width:100%;}
+}
 </style>
 </head>
 <body>
@@ -211,17 +238,18 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
 <canvas id="stars"></canvas><div class="grain"></div><canvas id="hearts"></canvas>
 <div id="heartRain"></div>
 
-<div id="cursor"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
-
-<div id="intro">
+<div id="intro" role="dialog" aria-modal="true" aria-label="Saytga kirish">
   <h1>Bir sir bor</h1>
-  <button id="openBtn">❤️ Sehrni ochish</button>
-  <p class="tiny">EHTIMOL, UMRINGIZDAGI ENG YAXSHI DAqiqA</p>
+  <button id="openBtn" type="button">❤️ Sehrni ochish</button>
+  <p class="tiny">EHTIMOL, UMRINGIZDAGI ENG GO'ZAL LAHZA</p>
 </div>
 
 <nav id="mainNav">
   <a class="logo" data-goto="home" href="#home">❤️ Sevgi</a>
-  <div class="navLinks">
+  <button class="menuToggle" id="menuToggle" type="button" aria-label="Menyuni ochish" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="navLinks" id="navLinks">
     <a href="#home" data-goto="home" class="active">Bosh sahifa</a>
     <a href="#maktub" data-goto="maktub">Maktub</a>
     <a href="#sabablar" data-goto="sabablar">Sabablar</a>
@@ -229,17 +257,18 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
     <a href="#olchagich" data-goto="olchagich">O'lchagich</a>
   </div>
   <div class="navRight">
-    <button id="nameBtn" title="Ismni o'zgartirish">✏️ <span id="navName">Ism</span></button>
-    <button id="musicBtn" title="Musiqa">🎵</button>
+    <button id="nameBtn" type="button" title="Ismni o'zgartirish">✏️ <span id="navName">Ism</span></button>
+    <button id="musicBtn" type="button" title="Musiqani yoqish" aria-label="Musiqani yoqish" aria-pressed="false">🎵</button>
   </div>
 </nav>
+<div class="navBackdrop" id="navBackdrop"></div>
 
-<div id="nameModal">
+<div id="nameModal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle" aria-hidden="true" class="show">
   <div class="modalBox">
-    <h2>Kim uchun bu sayt? 🌹</h2>
+    <h2 id="nameModalTitle">Kim uchun bu sayt? 🌹</h2>
     <p>Sevgan insoningizning ismini yozing — butun sayt unga moslanadi</p>
-    <input id="nameInput" type="text" maxlength="24" placeholder="Masalan: Dilnoza">
-    <button id="saveName">Saqlash ✨</button>
+    <input id="nameInput" type="text" maxlength="24" autocomplete="name" placeholder="Masalan: Dilnoza" required>
+    <button id="saveName" type="button">Saqlash ✨</button>
   </div>
 </div>
 
@@ -275,7 +304,7 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
       <div class="envFlap"></div>
       <div class="seal">❤️</div>
     </div>
-    <button id="nextLetter">Keyingi maktub →</button>
+    <button id="nextLetter" type="button">Keyingi maktub →</button>
   </div>
 </section>
 
@@ -296,7 +325,7 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
       <div class="frame" id="frame"><span>Bu yerga sevgan insoningiz suratini joylang 📷<br>(faqat sizning brauzeringizda saqlanadi)</span></div>
       <h3><span class="heroName">Siz</span> — yuragimning birinchi beti</h3>
       <label class="uploadBtn" for="fileInput">Surat tanlash ✨</label>
-      <input id="fileInput" type="file" accept="image/*">
+      <input id="fileInput" type="file" accept="image/*" aria-label="Xotira uchun surat tanlash">
     </div>
   </div>
   <p class="memTip">Sichqonchani karta ustida harakatlantiring — u sizga qarab buriladi 💫</p>
@@ -309,10 +338,10 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
   <div class="meterBox">
     <div class="meterVal"><span id="meterNum">50</span>%</div>
     <p class="meterMsg" id="meterMsg">…</p>
-    <input type="range" id="meter" min="0" max="100" value="50">
-    <p style="margin-top:18px;font-size:.75rem;letter-spacing:.25em;opacity:.45">SLAYDERNI SÜRÜNG VA SINAB KÖRING</p>
+    <input type="range" id="meter" min="0" max="100" value="50" aria-label="Sevgi foizini tanlang">
+    <p style="margin-top:18px;font-size:.75rem;letter-spacing:.25em;opacity:.45">SLAYDERNI SURING VA SINAB KO'RING</p>
   </div>
-  <button id="complimentBtn">🎁 Kompliment olish</button>
+  <button id="complimentBtn" type="button">🎁 Kompliment olish</button>
   <p id="compliment"></p>
 </section>
 
@@ -324,221 +353,440 @@ footer .sig{font-family:Georgia,serif;font-style:italic;font-size:1.2rem;margin-
 </footer>
 
 <script>
-/* ================= YULDUZLAR + UCHQUNLAR ================= */
-const sc=document.getElementById('stars'),sx=sc.getContext('2d');
-let SW,SH,stars=[];
-function resize(){SW=sc.width=innerWidth;SH=sc.height=innerHeight;
-  stars=Array.from({length:Math.min(220,SW/6)},()=>({x:Math.random()*SW,y:Math.random()*SH,
-  r:Math.random()*1.4+.3,p:Math.random()*Math.PI*2,s:.002+Math.random()*.004}));}
-resize();addEventListener('resize',resize);
-let shooters=[];
-function starLoop(){
-  sx.clearRect(0,0,SW,SH);
-  for(const s of stars){s.p+=s.s;const a=.3+Math.abs(Math.sin(s.p))*.7;
-    sx.beginPath();sx.arc(s.x,s.y,s.r,0,7);sx.fillStyle=`rgba(255,255,255,${a})`;sx.fill();}
-  if(Math.random()<.004&&shooters.length<2)shooters.push({x:Math.random()*SW*.7+SW*.2,y:Math.random()*SH*.3,vx:-9-Math.random()*5,vy:4+Math.random()*3,life:1});
-  shooters=shooters.filter(s=>s.life>0);
-  for(const s of shooters){s.x+=s.vx;s.y+=s.vy;s.life-=.02;
-    const g=sx.createLinearGradient(s.x,s.y,s.x-s.vx*8,s.y-s.vy*8);
-    g.addColorStop(0,`rgba(255,209,102,${s.life})`);g.addColorStop(1,'rgba(255,209,102,0)');
-    sx.strokeStyle=g;sx.lineWidth=2;sx.beginPath();sx.moveTo(s.x,s.y);sx.lineTo(s.x-s.vx*8,s.y-s.vy*8);sx.stroke();}
-  requestAnimationFrame(starLoop);
-}
-starLoop();
+(() => {
+  'use strict';
 
-/* ================= SUZUVCHI YURAKLAR ================= */
-const hc=document.getElementById('hearts'),hx=hc.getContext('2d');
-let hearts=[];
-function hResize(){hc.width=innerWidth;hc.height=innerHeight;}
-hResize();addEventListener('resize',hResize);
-function spawnHeart(x,y,big){hearts.push({x,y,vx:(Math.random()-.5)*.7,vy:-.5-Math.random()*.9,
-  s:big?10+Math.random()*16:4+Math.random()*10,p:Math.random()*Math.PI*2,ps:.02+Math.random()*.03,
-  hue:Math.random()<.8?335:280,life:1,decay:.002+Math.random()*.003});}
-for(let i=0;i<26;i++)spawnHeart(Math.random()*innerWidth,Math.random()*innerHeight);
-setInterval(()=>{if(hearts.length<60)spawnHeart(Math.random()*innerWidth,innerHeight+20);},500);
-function heartPath(c,s){c.beginPath();c.moveTo(0,s*.35);
-  c.bezierCurveTo(-s,-s*.5,-s*.4,-s*1.2,0,-s*.45);
-  c.bezierCurveTo(s*.4,-s*1.2,s,-s*.5,0,s*.35);c.closePath();}
-function heartLoop(){
-  hx.clearRect(0,0,hc.width,hc.height);
-  hearts=hearts.filter(h=>h.life>0&&h.y>-60);
-  for(const h of hearts){h.x+=h.vx+Math.sin(h.p)*.4;h.y+=h.vy;h.p+=h.ps;h.life-=h.decay;
-    hx.save();hx.translate(h.x,h.y);hx.rotate(Math.sin(h.p)*.25);
-    hx.globalAlpha=Math.min(1,h.life)*.75;
-    hx.fillStyle=`hsl(${h.hue} 90% 68%)`;hx.shadowColor=`hsl(${h.hue} 90% 60%)`;hx.shadowBlur=12;
-    heartPath(hx,h.s);hx.fill();hx.restore();}
-  requestAnimationFrame(heartLoop);
-}
-heartLoop();
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ================= BOSGANDA YURAK PORTLASH ================= */
-addEventListener('click',e=>{
-  if(e.target.closest('#cursor,#musicBtn,#nameBtn,input,label'))return;
-  for(let i=0;i<10;i++)spawnHeart(e.clientX+(Math.random()-.5)*30,e.clientY+(Math.random()-.5)*30,true);
-});
+  /* ---------- CANVAS: YULDUZLAR ---------- */
+  const starCanvas = $('#stars');
+  const starCtx = starCanvas?.getContext('2d');
+  let width = 0, height = 0, stars = [], shooters = [];
+  function resizeCanvases() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    [starCanvas, $('#hearts')].forEach(canvas => {
+      if (!canvas) return;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    });
+    stars = Array.from({ length: Math.min(180, Math.floor(width / 7)) }, () => ({
+      x: Math.random() * width, y: Math.random() * height,
+      r: Math.random() * 1.35 + .25, phase: Math.random() * Math.PI * 2,
+      speed: .002 + Math.random() * .003
+    }));
+  }
+  resizeCanvases();
+  window.addEventListener('resize', resizeCanvases, { passive: true });
 
-/* ================= MAXSUS KURSOR ================= */
-const cur=document.getElementById('cursor');let mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function curLoop(){cx+=(mx-cx)*.22;cy+=(my-cy)*.22;
-  cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(curLoop);})();
-document.addEventListener('mouseover',e=>{cur.classList.toggle('hovering',!!e.target.closest('button,a,input,label,.envelope,.card,.tilt,.bigLink'));});
+  function drawStars() {
+    if (!starCtx) return;
+    starCtx.clearRect(0, 0, width, height);
+    for (const star of stars) {
+      star.phase += star.speed;
+      starCtx.beginPath();
+      starCtx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+      starCtx.fillStyle = `rgba(255,255,255,${.25 + Math.abs(Math.sin(star.phase)) * .7})`;
+      starCtx.fill();
+    }
+    if (!reducedMotion && Math.random() < .003 && shooters.length < 2) {
+      shooters.push({ x: Math.random() * width, y: Math.random() * height * .35,
+        vx: -8 - Math.random() * 4, vy: 3 + Math.random() * 3, life: 1 });
+    }
+    shooters = shooters.filter(s => s.life > 0);
+    for (const s of shooters) {
+      s.x += s.vx; s.y += s.vy; s.life -= .025;
+      const gradient = starCtx.createLinearGradient(s.x, s.y, s.x - s.vx * 7, s.y - s.vy * 7);
+      gradient.addColorStop(0, `rgba(255,209,102,${s.life})`);
+      gradient.addColorStop(1, 'rgba(255,209,102,0)');
+      starCtx.strokeStyle = gradient; starCtx.lineWidth = 2;
+      starCtx.beginPath(); starCtx.moveTo(s.x, s.y);
+      starCtx.lineTo(s.x - s.vx * 7, s.y - s.vy * 7); starCtx.stroke();
+    }
+  }
 
-/* ================= SAHIFALAR ORASIDA YURISH ================= */
-const pages=document.querySelectorAll('.page');
-function go(id){
-  pages.forEach(p=>p.classList.toggle('active',p.id===id));
-  document.querySelectorAll('.navLinks a').forEach(a=>a.classList.toggle('active',a.dataset.goto===id));
-  window.scrollTo({top:0});
-  location.hash=id;
-}
-document.querySelectorAll('[data-goto]').forEach(el=>el.addEventListener('click',e=>{
-  e.preventDefault();go(el.dataset.goto);}));
-if(location.hash){const h=location.hash.slice(1);if(document.getElementById(h))go(h);}
+  /* ---------- SUZUVCHI YURAKLAR ---------- */
+  const heartCanvas = $('#hearts');
+  const heartCtx = heartCanvas?.getContext('2d');
+  let hearts = [];
+  function spawnHeart(x, y, large = false) {
+    if (reducedMotion || hearts.length > 100) return;
+    hearts.push({ x, y, vx: (Math.random() - .5) * .7,
+      vy: -.45 - Math.random() * .8, size: large ? 10 + Math.random() * 15 : 4 + Math.random() * 9,
+      phase: Math.random() * 6, speed: .02 + Math.random() * .03,
+      hue: Math.random() < .8 ? 335 : 280, life: 1, decay: .003 + Math.random() * .003 });
+  }
+  function heartPath(ctx, size) {
+    ctx.beginPath(); ctx.moveTo(0, size * .35);
+    ctx.bezierCurveTo(-size, -size * .5, -size * .4, -size * 1.2, 0, -size * .45);
+    ctx.bezierCurveTo(size * .4, -size * 1.2, size, -size * .5, 0, size * .35);
+    ctx.closePath();
+  }
+  if (!reducedMotion) {
+    for (let i = 0; i < 18; i++) spawnHeart(Math.random() * width, Math.random() * height);
+    window.setInterval(() => {
+      if (document.visibilityState === 'visible' && hearts.length < 45) spawnHeart(Math.random() * width, height + 20);
+    }, 850);
+  }
+  function render() {
+    if (document.visibilityState === 'visible') {
+      drawStars();
+      if (heartCtx) {
+        heartCtx.clearRect(0, 0, width, height);
+        hearts = hearts.filter(h => h.life > 0 && h.y > -60);
+        for (const h of hearts) {
+          h.x += h.vx + Math.sin(h.phase) * .35; h.y += h.vy;
+          h.phase += h.speed; h.life -= h.decay;
+          heartCtx.save(); heartCtx.translate(h.x, h.y); heartCtx.rotate(Math.sin(h.phase) * .2);
+          heartCtx.globalAlpha = Math.max(0, h.life) * .7;
+          heartCtx.fillStyle = `hsl(${h.hue} 90% 68%)`;
+          heartCtx.shadowColor = `hsl(${h.hue} 90% 60%)`; heartCtx.shadowBlur = 10;
+          heartPath(heartCtx, h.size); heartCtx.fill(); heartCtx.restore();
+        }
+      }
+    }
+    requestAnimationFrame(render);
+  }
+  render();
 
-/* ================= INTRO ================= */
-document.getElementById('openBtn').addEventListener('click',e=>{
-  for(let i=0;i<40;i++)spawnHeart(e.clientX+(Math.random()-.5)*160,e.clientY+(Math.random()-.5)*160,true);
-  document.getElementById('intro').classList.add('hide');});
+  document.addEventListener('click', event => {
+    if (reducedMotion || event.target.closest('input, label, #musicBtn, #nameBtn, #menuToggle')) return;
+    for (let i = 0; i < 6; i++) spawnHeart(event.clientX + (Math.random() - .5) * 35,
+      event.clientY + (Math.random() - .5) * 35, true);
+  });
 
-/* HOME link kartalari yorug'ligi */
-document.querySelectorAll('.bigLink').forEach(l=>l.addEventListener('mousemove',e=>{
-  const b=l.getBoundingClientRect();
-  l.style.setProperty('--gx',((e.clientX-b.left)/b.width*100)+'%');
-  l.style.setProperty('--gy',((e.clientY-b.top)/b.height*100)+'%');}));
+  /* ---------- ISMDAGI O'ZGARISH & LOCALSTORAGE ---------- */
+  let partnerName = localStorage.getItem('sevgi_partner_name') || 'Dilnoza';
+  const heroNameEls = $$('.heroName');
+  const navNameEl = $('#navName');
+  const nameInput = $('#nameInput');
+  const nameModal = $('#nameModal');
 
-/* ================= ISM SHAXSIYLASHTIRISH ================= */
-function applyName(n){if(!n)return;n=n.trim().charAt(0).toUpperCase()+n.trim().slice(1);
-  document.querySelectorAll('.heroName').forEach(el=>el.textContent=n);
-  document.getElementById('navName').textContent=n;
-  document.title=`${n} uchun 💌`;}
-const nameModal=document.getElementById('nameModal'),nameInput=document.getElementById('nameInput');
-function openNameModal(){nameInput.value=localStorage.getItem('loveName')||'';
-  nameModal.classList.add('show');setTimeout(()=>nameInput.focus(),100);}
-document.getElementById('saveName').addEventListener('click',()=>{
-  const v=nameInput.value;
-  if(v.trim()){localStorage.setItem('loveName',v);applyName(v);}
-  nameModal.classList.remove('show');});
-nameInput.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('saveName').click();});
-document.getElementById('nameBtn').addEventListener('click',openNameModal);
-const savedName=localStorage.getItem('loveName');
-if(savedName)applyName(savedName);else setTimeout(openNameModal,1500);
+  function updateNames(name) {
+    partnerName = name.trim() || 'Dilnoza';
+    localStorage.setItem('sevgi_partner_name', partnerName);
+    heroNameEls.forEach(el => el.textContent = partnerName);
+    if (navNameEl) navNameEl.textContent = partnerName;
+  }
+  updateNames(partnerName);
 
-/* ================= MAKTUB ================= */
-const letters=[
-`Azizim…
+  $('#openBtn')?.addEventListener('click', () => {
+    $('#intro')?.classList.add('hide');
+    if (!localStorage.getItem('sevgi_partner_name')) {
+      nameModal?.classList.add('show');
+      nameModal?.setAttribute('aria-hidden', 'false');
+    }
+  });
 
-Bu maktub senga bir sirdan yozilmoqda: men seni o'ylamasdan bir daqiqa ham o'tkaza olmayman. Sen kulganingda — quyosh chiqadi, sen yig'lasang — dunyo to'xtaydi.
+  $('#saveName')?.addEventListener('click', () => {
+    const val = nameInput?.value;
+    if (val) updateNames(val);
+    nameModal?.classList.remove('show');
+    nameModal?.setAttribute('aria-hidden', 'true');
+  });
 
-Dunyoda minglab yulduz bor, lekin men faqat bittasini ko'raman. Seni.
+  $('#nameBtn')?.addEventListener('click', () => {
+    if (nameInput) nameInput.value = partnerName;
+    nameModal?.classList.add('show');
+    nameModal?.setAttribute('aria-hidden', 'false');
+  });
 
-Meni topganingga bir umr minnatdorman. ❤️`,
-`Azizim…
+  /* ---------- NAVIGATION & ROUTING ---------- */
+  const navLinks = $$('.navLinks a');
+  const pages = $$('.page');
+  const menuToggle = $('#menuToggle');
+  const navLinksContainer = $('#navLinks');
+  const navBackdrop = $('#navBackdrop');
 
-Bugun ham seni o'yladim. Hisobladim: bir kunda 86 400 soniya bor — va men ularning har birida seni o'ylayman.
+  function switchPage(targetId) {
+    pages.forEach(p => p.classList.remove('active'));
+    const target = $(`#${targetId}`);
+    if (target) target.classList.add('active');
+    navLinks.forEach(a => {
+      if (a.dataset.goto === targetId) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  }
 
-Sen mening eng go'zal baxtim, eng chin haqiqatim, eng shirin tushimsan.
+  function closeMenu() {
+    navLinksContainer?.classList.remove('open');
+    navBackdrop?.classList.remove('show');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
 
-Sen bilan o'tgan har bir kun — yangi bir yilning boshlanishi. Seni abadiy sevaman. ❤️`,
-`Azizim…
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = navLinksContainer?.classList.toggle('open');
+    navBackdrop?.classList.toggle('show');
+    menuToggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.classList.toggle('menu-open', isOpen);
+  });
 
-Agar sen yulduz bo'lganingda, men butun umrim osmonga qarardim. Agar sen yomg'ir bo'lganingda, men sovuqda ham yurardim.
+  navBackdrop?.addEventListener('click', closeMenu);
 
-Lekin sen meniki ekansan — va men bu dunyodagi eng baxtli insonman.
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-goto]');
+    if (btn) {
+      e.preventDefault();
+      switchPage(btn.dataset.goto);
+    }
+  });
 
-Qalbim sening noming bilan uradi. Har bir urishda: sen. Sen. Sen. ❤️`];
-const typed=document.getElementById('typed'),nextBtn=document.getElementById('nextLetter');
-let li=0,typedStarted=false,iv=null;
-function typeText(text){clearInterval(iv);let i=0;typed.innerHTML='<span class="caret"></span>';
-  iv=setInterval(()=>{i++;typed.innerHTML=text.slice(0,i).replace(/\n/g,'<br>')+'<span class="caret"></span>';
-    if(i>=text.length){clearInterval(iv);nextBtn.classList.add('show');}},38);}
-document.getElementById('envelope').addEventListener('click',function(){
-  if(this.classList.contains('open'))return;
-  this.classList.add('open');
-  setTimeout(()=>{if(!typedStarted){typedStarted=true;typeText(letters[0]);}},1000);});
-nextBtn.addEventListener('click',()=>{li=(li+1)%letters.length;nextBtn.classList.remove('show');
-  typeText(letters[li]);
-  for(let i=0;i<16;i++)spawnHeart(innerWidth/2+(Math.random()-.5)*260,innerHeight/2,true);});
+  /* ---------- MAKTUB (TYPING) ---------- */
+  const envelope = $('#envelope');
+  const typedEl = $('#typed');
+  const nextLetterBtn = $('#nextLetter');
+  let letterIndex = 0;
 
-/* ================= SABABLAR KARTOCHKALARI ================= */
-const reasons=[
- {e:'😊',t:'Kulingiz',d:'Bosib ko\'ring',b:'Siz kulganda butun xonaga yorug\'lik tarqaladi. Hatto eng bulutli kunlarda ham.'},
- {e:'👀',t:'Ko\'zlaringiz',d:'Bosib ko\'ring',b:'Ularda men o\'zimni ko\'raman. Va u yer — mening eng sevimli joyim.'},
- {e:'🎵',t:'Ovozingiz',d:'Bosib ko\'ring',b:'Sizning so\'zlaringiz — menga eng go\'zal musiqa. Qolgan hamma narsa — shovqin.'},
- {e:'🌙',t:'Tushlaringiz',d:'Bosib ko\'ring',b:'Siz uxlaganda ham dunyo go\'zal. Chunki tushingizga men kiraman.'},
- {e:'💪',t:'Irodangiz',d:'Bosib ko\'ring',b:'Sizning qat\'iyatingiz menga har kuni kuch beradi. Sen — mening qahramonimsan.'},
- {e:'♾️',t:'Mavjudligingiz',d:'Bosib ko\'ring',b:'Faqat sen mavjud ekansan — dunyo menga ma\'noli. Shunchaki, sen borliging uchun rahmat.'}];
-const grid=document.getElementById('cardGrid');
-reasons.forEach(r=>{const c=document.createElement('div');c.className='card';
-  c.innerHTML=`<div class="cardInner"><div class="face front"><div class="emo">${r.e}</div><h3>${r.t}</h3><p>${r.d}</p></div>
-  <div class="face back"><p>${r.b}</p></div></div>`;
-  c.addEventListener('click',()=>{c.classList.toggle('flipped');
-    if(c.classList.contains('flipped')){const b=c.getBoundingClientRect();
-      for(let i=0;i<6;i++)spawnHeart(b.left+b.width/2,b.top+b.height/2,true);}});grid.appendChild(c);});
+  const letters = [
+    () => `Azizim ${partnerName},\n\nSizni uchratganimdan beri dunyodagi barcha ranglar o'zgacha jilo kasb etdi. Har bir kunim siz bilan go'zal, har bir nafasim siz bilan mazmunli...`,
+    () => `Bilasizmi ${partnerName}?\n\nKo'zlaringizga qarasam, butun koinot tinchlangandek tuyuladi. Siz mening eng beg'ubor tilagim, yuragimning egasisiz.`,
+    () => `Mangu birga bo'laylik ${partnerName}.\n\nHech qachon o'zgarmang, chunki siz aynan shunday mukammalsiz. Sizni cheksiz yaxshi ko'raman ❤️`
+  ];
 
-/* ================= XOTIRA 3D KARTA ================= */
-const tilt=document.getElementById('tiltCard');
-tilt.addEventListener('mousemove',e=>{const b=tilt.getBoundingClientRect();
-  const x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;
-  tilt.style.transform=`rotateY(${x*18}deg) rotateX(${-y*18}deg)`;});
-tilt.addEventListener('mouseleave',()=>tilt.style.transform='rotateY(0) rotateX(0)');
-const frame=document.getElementById('frame');
-function setPhoto(src){frame.innerHTML=`<img src="${src}" alt="sevgi">`;}
-if(localStorage.getItem('lovePhoto'))setPhoto(localStorage.getItem('lovePhoto'));
-document.getElementById('fileInput').addEventListener('change',e=>{
-  const f=e.target.files[0];if(!f)return;
-  const r=new FileReader();r.onload=ev=>{setPhoto(ev.target.result);
-    for(let i=0;i<20;i++)spawnHeart(innerWidth/2+(Math.random()-.5)*300,innerHeight/2,true);
-    try{localStorage.setItem('lovePhoto',ev.target.result);}catch(_){}};r.readAsDataURL(f);});
+  let isTyping = false;
+  function typeWriter(text, i = 0) {
+    if (i === 0) typedEl.innerHTML = '<span class="caret"></span>';
+    if (i < text.length) {
+      isTyping = true;
+      const char = text.charAt(i);
+      const caret = typedEl.querySelector('.caret');
+      if (char === '\n') {
+        typedEl.insertBefore(document.createElement('br'), caret);
+      } else {
+        typedEl.insertBefore(document.createTextNode(char), caret);
+      }
+      setTimeout(() => typeWriter(text, i + 1), 32);
+    } else {
+      isTyping = false;
+      nextLetterBtn?.classList.add('show');
+    }
+  }
 
-/* ================= O'LCHAGICH ================= */
-const meter=document.getElementById('meter'),num=document.getElementById('meterNum'),msg=document.getElementById('meterMsg');
-const msgs=[[20,'Hali his qilayapsizmi? Yurak sizni kutmoqda… 💭'],
- [45,'Uf, biroz qo\'rqinchli-yu? Qo\'rqmang — sevgi shirin narsa. 🍯'],
- [70,'Mana endi gap bor! Yurak allaqachon tez urmoqda. 💓'],
- [90,'Voy-voy-voy… Bu allaqachon sevgi! Iqror bo\'ling! 😍'],
- [101,'100% — U SIZNIKI. Zanjirni taqib qo\'ying! 💍❤️']];
-function updMeter(){const v=+meter.value;num.textContent=v;
-  meter.style.setProperty('--fill',v+'%');
-  msg.textContent=msgs.find(m=>v<m[0])[1];
-  if(v===100)rainHearts();}
-meter.addEventListener('input',updMeter);updMeter();
+  envelope?.addEventListener('click', () => {
+    if (envelope.classList.contains('open') || isTyping) return;
+    envelope.classList.add('open');
+    setTimeout(() => {
+      typeWriter(letters[letterIndex]());
+    }, 900);
+  });
 
-const compliments=[
- 'Sen kulganda, mening butun dunyom gullaydi 🌸',
- 'Sen ko\'rgan eng go\'zal insonsiz — va bu sirni faqat siz bilan o\'rtoqlashaman 😌',
- 'Sen bilan suhbat — menga dunyodagi eng zo\'r sovg\'a 🎁',
- 'Sen bor joyda quyosh ortiqcha chiqmaydi, chunki sen yetarlicha yorug\'san ☀️',
- 'Sen mening sevimli tasodifim, eng go\'zal xatomasan ✨',
- 'Sening ismingni eslaganimda, yuragim tabassum qiladi 💓',
- 'Agar go\'zallik inson bo\'lsa, u aynan sen ekansan 👑'];
-document.getElementById('complimentBtn').addEventListener('click',e=>{
-  document.getElementById('compliment').textContent=compliments[Math.floor(Math.random()*compliments.length)];
-  for(let i=0;i<20;i++)spawnHeart(e.clientX+(Math.random()-.5)*80,e.clientY,true);});
+  nextLetterBtn?.addEventListener('click', () => {
+    letterIndex = (letterIndex + 1) % letters.length;
+    nextLetterBtn.classList.remove('show');
+    envelope.classList.remove('open');
+    setTimeout(() => {
+      envelope.classList.add('open');
+      setTimeout(() => typeWriter(letters[letterIndex]()), 900);
+    }, 400);
+  });
 
-/* ================= YOMG'IR YURAKLAR ================= */
-function rainHearts(){const box=document.getElementById('heartRain');
-  for(let i=0;i<50;i++){const h=document.createElement('div');
-    h.textContent=['❤️','💖','💘','💝','✨'][Math.floor(Math.random()*5)];
-    h.style.cssText=`position:absolute;left:${Math.random()*100}vw;top:-40px;font-size:${18+Math.random()*26}px;
-      transition:transform ${3+Math.random()*3}s linear,opacity 4s;pointer-events:none`;
-    box.appendChild(h);
-    requestAnimationFrame(()=>{h.style.transform=`translateY(110vh) rotate(${Math.random()*720-360}deg)`;h.style.opacity=0;});
-    setTimeout(()=>h.remove(),6500);}}
+  /* ---------- SABABLAR CARDS ---------- */
+  const reasons = [
+    { emo: '✨', title: 'Samimiyligingiz', desc: 'Tabassumingiz butun olamni nurga to\'ldiradi.' },
+    { emo: '🌙', title: 'Qalb go\'zalligi', desc: 'Dunyoning eng pokiza va mehribon yuragi sizniki.' },
+    { emo: '💫', title: 'Qo\'llab-quvvatlashingiz', desc: 'Yonimda bo\'lganingizda tog\'larni ham ko\'chira olaman.' },
+    { emo: '🌹', title: 'Nafisligingiz', desc: 'Har bir so\'zingiz va harakatingiz ohangrabodek maftunkor.' },
+    { emo: '🔥', title: 'Olovli nigohingiz', desc: 'Nigohingiz birgina lahzada qalbimni eritib yuboradi.' },
+    { emo: '❤️', title: 'Borligingiz', desc: 'Shunchaki hayotimda borligingizning o\'zi eng katta baxt.' }
+  ];
 
-/* ================= MULOYIM MUSIQA ================= */
-let ac=null,musicOn=false,musicTimer=null;
-const notes=[261.63,293.66,329.63,392,440,523.25];
-function pluck(){const o=ac.createOscillator(),g=ac.createGain();
-  o.type='sine';o.frequency.value=notes[Math.floor(Math.random()*notes.length)]*(Math.random()<.3?2:1);
-  const t=ac.currentTime;g.gain.setValueAtTime(0,t);
-  g.gain.linearRampToValueAtTime(.06,t+.05);g.gain.exponentialRampToValueAtTime(.0001,t+2.2);
-  o.connect(g).connect(ac.destination);o.start(t);o.stop(t+2.5);}
-document.getElementById('musicBtn').addEventListener('click',function(){
-  if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();
-  musicOn=!musicOn;
-  if(musicOn){ac.resume();pluck();musicTimer=setInterval(pluck,900);this.textContent='🔊';}
-  else{clearInterval(musicTimer);this.textContent='🎵';}});
+  const cardGrid = $('#cardGrid');
+  if (cardGrid) {
+    cardGrid.innerHTML = reasons.map((r, idx) => `
+      <div class="card" role="button" tabindex="0" aria-label="Sabab ${idx + 1}">
+        <div class="cardInner">
+          <div class="face front">
+            <span class="emo">${r.emo}</span>
+            <h3>${r.title}</h3>
+            <p>Bosib oching</p>
+          </div>
+          <div class="face back">
+            <p>${r.desc}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    $$('.card').forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('flipped');
+        }
+      });
+    });
+  }
+
+  /* ---------- XOTIRA 3D TILT & UPLOAD ---------- */
+  const tiltCard = $('#tiltCard');
+  const fileInput = $('#fileInput');
+  const frame = $('#frame');
+
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (finePointer && tiltCard && !reducedMotion) {
+    tiltCard.addEventListener('mousemove', e => {
+      const rect = tiltCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xc = rect.width / 2;
+      const yc = rect.height / 2;
+      const dx = (x - xc) / xc;
+      const dy = (y - yc) / yc;
+      tiltCard.style.transform = `rotateY(${dx * 12}deg) rotateX(${-dy * 12}deg) translateY(-6px)`;
+    });
+    tiltCard.addEventListener('mouseleave', () => {
+      tiltCard.style.transform = 'rotateY(0deg) rotateX(0deg) translateY(0px)';
+    });
+  }
+
+  fileInput?.addEventListener('change', e => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      if (frame) {
+        frame.innerHTML = `<img src="${ev.target.result}" alt="Xotira surati">`;
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ---------- O'LCHAGICH ---------- */
+  const meter = $('#meter');
+  const meterNum = $('#meterNum');
+  const meterMsg = $('#meterMsg');
+  const complimentBtn = $('#complimentBtn');
+  const complimentEl = $('#compliment');
+  const heartRain = $('#heartRain');
+
+  const messages = [
+    [0, 20, 'Hali boshlanishi... Yurak biroz tortinmoqda 🌸'],
+    [21, 50, 'Mehrimiz asta-sekin qizib bormoqda 💖'],
+    [51, 80, 'Oradagi rishtalar kundan-kun mustahkamlanmoqda ✨'],
+    [81, 99, 'Bu muhabbat koinot chegaralaridan oshib ketdi 🔥'],
+    [100, 100, 'Cheksiz va abadiy sevgi! Siz mening borligimsiz ❤️🌹']
+  ];
+
+  function updateMeter(val) {
+    if (meterNum) meterNum.textContent = val;
+    if (meter) meter.style.setProperty('--fill', val + '%');
+    const found = messages.find(([min, max]) => val >= min && val <= max);
+    if (meterMsg && found) meterMsg.textContent = found[2];
+    if (val == 100 && !reducedMotion) {
+      triggerRain();
+    }
+  }
+
+  meter?.addEventListener('input', e => {
+    updateMeter(e.target.value);
+  });
+  updateMeter(50);
+
+  function triggerRain() {
+    if (!heartRain) return;
+    for (let i = 0; i < 25; i++) {
+      const span = document.createElement('span');
+      span.textContent = Math.random() < .5 ? '❤️' : '💖';
+      span.style.position = 'absolute';
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.top = '-40px';
+      span.style.fontSize = (16 + Math.random() * 24) + 'px';
+      span.style.transition = `transform ${1.5 + Math.random()}s linear, opacity 1s`;
+      heartRain.appendChild(span);
+      setTimeout(() => {
+        span.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 360}deg)`;
+        span.style.opacity = '0';
+      }, 50);
+      setTimeout(() => span.remove(), 3000);
+    }
+  }
+
+  const compliments = [
+    `«${partnerName}, tabassumingiz har safar kunimni nurga to'ldiradi.»`,
+    `«Siz bilan o'tgan har bir soniya hayotimdagi eng baxtli lahza.»`,
+    `«Dunyodagi eng go'zal va samimiy inson — bu sizsiz ${partnerName}!»`,
+    `«Qalbim faqat sizning ismingizni takrorlaydi.»`,
+    `«Siz mening eng go'zal taqdirimsiz.»`
+  ];
+
+  complimentBtn?.addEventListener('click', () => {
+    const randomComp = compliments[Math.floor(Math.random() * compliments.length)];
+    if (complimentEl) complimentEl.textContent = randomComp;
+    triggerRain();
+  });
+
+  /* ---------- MUSIQA PLAYER (WEB AUDIO API MELODY) ---------- */
+  const musicBtn = $('#musicBtn');
+  let audioCtx = null;
+  let isPlaying = false;
+  let timerId = null;
+
+  function playNote(freq, duration, type = 'sine') {
+    if (!audioCtx) return;
+    try {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  const melody = [
+    {f: 330, d: .4}, {f: 392, d: .4}, {f: 440, d: .8},
+    {f: 392, d: .4}, {f: 330, d: .4}, {f: 293, d: .8},
+    {f: 330, d: .4}, {f: 293, d: .4}, {f: 261, d: .8},
+    {f: 220, d: 1.2}
+  ];
+  let noteIdx = 0;
+
+  function startMusic() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    isPlaying = true;
+    musicBtn.textContent = '🎶';
+    musicBtn.setAttribute('aria-pressed', 'true');
+
+    function loop() {
+      if (!isPlaying) return;
+      const note = melody[noteIdx];
+      playNote(note.f, note.d);
+      noteIdx = (noteIdx + 1) % melody.length;
+      timerId = setTimeout(loop, note.d * 900);
+    }
+    loop();
+  }
+
+  function stopMusic() {
+    isPlaying = false;
+    clearTimestamp(); // safe fallback
+    clearTimeout(timerId);
+    musicBtn.textContent = '🎵';
+    musicBtn.setAttribute('aria-pressed', 'false');
+  }
+
+  musicBtn?.addEventListener('click', () => {
+    if (isPlaying) stopMusic();
+    else startMusic();
+  });
+
+})();
 </script>
 </body>
 </html>
